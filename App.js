@@ -5,24 +5,29 @@ export default class App extends Component {
   constructor() {
     super();
 
-    this.state = { first_name: '', last_name: '', loading: false, disabled: false }
+    this.state = { name_user: "", email_user: "", pass_user: "", loading: false, disabled: false };
   }
 
   saveData = () => {
     // console.log(this.saveData)
     this.setState({ loading: true, disabled: true }, () => {
-      fetch("http://192.168.1.10/qori/user_registration.php", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          first_name: this.state.first_name,
+      fetch(
+        "http://localhost/server_registration/user_registration.php",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name_user: this.state.name_user,
 
-          last_name: this.state.last_name
-        })
-      })
+            email_user: this.state.email_user,
+
+            pass_user: this.state.pass_user
+          })
+        }
+      )
         .then(response => response.json())
         .then(responseJson => {
           alert(responseJson);
@@ -36,26 +41,25 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <TextInput underlineColorAndroid="transparent" placeholder="Your First Name" style={styles.textInput} onChangeText={(text) => this.setState({ first_name: text })} />
+    return <View style={styles.container}>
+        <TextInput underlineColorAndroid="transparent" placeholder="Your Name" style={styles.textInput} onChangeText={text => this.setState(
+              { name_user: text }
+            )} />
 
-        <TextInput underlineColorAndroid="transparent" placeholder="Your Last Name" style={styles.textInput} onChangeText={(text) => this.setState({ last_name: text })} />
+        <TextInput underlineColorAndroid="transparent" placeholder="Your Email" style={styles.textInput} onChangeText={text => this.setState(
+              { email_user: text }
+            )} />
+
+        <TextInput underlineColorAndroid="transparent" placeholder="Your Email" style={styles.textInput} onChangeText={text => this.setState(
+              { pass_user: text }
+            )} />
 
         <TouchableOpacity disabled={this.state.disabled} activeOpacity={0.8} style={styles.Btn} onPress={this.saveData}>
-          <Text style={styles.btnText}>Insert</Text>
+          <Text style={styles.btnText}>Registration</Text>
         </TouchableOpacity>
 
-        {
-          (this.state.loading)
-            ?
-            (<ActivityIndicator size="large" />)
-            :
-            null
-        }
-
-      </View>
-    );
+        {this.state.loading ? <ActivityIndicator size="large" /> : null}
+      </View>;
   }
 }
 
