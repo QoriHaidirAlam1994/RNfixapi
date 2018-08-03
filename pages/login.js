@@ -14,14 +14,14 @@ import { StackNavigator } from "react-navigation";
 export default class login extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Login",
-    headerRight: (
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
-        style={{ margin: 10, backgroundColor: "orange", padding: 10 }}
-      >
-        <Text style={{ color: "#ffffff" }}>Home</Text>
-      </TouchableOpacity>
-    )
+    // headerRight: (
+    //   <TouchableOpacity
+    //     onPress={() => navigation.navigate("Home")}
+    //     style={{ margin: 10, backgroundColor: "orange", padding: 10 }}
+    //   >
+    //     <Text style={{ color: "#ffffff" }}>Home</Text>
+    //   </TouchableOpacity>
+    // )
   });
   constructor(props) {
     super(props);
@@ -44,13 +44,13 @@ export default class login extends Component {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (userEmail == "") {
       //alert("Please enter Email address");
-      this.setState({ email_user: "Please enter Email address" });
+      this.setState({ email_user: "Masukan Email Terlebih Dahulu" });
     } else if (reg.test(userEmail) === false) {
       //alert("Email is Not Correct");
-      this.setState({ email_user: "Email is Not Correct" });
+      this.setState({ email_user: "Email Anda Salah" });
       return false;
     } else if (userPassword == "") {
-      this.setState({ email_user: "Please enter password" });
+      this.setState({ email_user: "Masukan Password Terlebih Dahulu" });
     } else {
       fetch("http://192.168.1.44/react_server/login.php", {
         method: "post",
@@ -59,7 +59,7 @@ export default class login extends Component {
           "Content-type": "application/json"
         },
         body: JSON.stringify({
-          // we will pass our input data to server
+          
           email_user: userEmail,
           pass_user: userPassword
         })
@@ -67,11 +67,11 @@ export default class login extends Component {
         .then(response => response.json())
         .then(responseJson => {
           if (responseJson == "ok") {
-            // redirect to profile page
-            alert("Successfully Login");
+            
+            alert("Selamat Anda Berhasil Login");
             this.props.navigation.navigate("Profile");
           } else {
-            alert("Wrong Login Details");
+            alert("Maaf Anda Tidak Berhasil Login");
           }
         })
         .catch(error => {
@@ -110,13 +110,15 @@ export default class login extends Component {
           style={{
             width: 200,
             padding: 10,
-            backgroundColor: "magenta",
+            backgroundColor: "blue",
             alignItems: "center"
           }}
         >
           <Text style={{ color: "white" }}>Login</Text>
         </TouchableOpacity>
       </View>
+
+      
     );
   }
 }

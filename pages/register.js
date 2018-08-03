@@ -12,14 +12,14 @@ import {
 export default class register extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Register",
-    headerRight: (
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
-        style={{ margin: 10, backgroundColor: "orange", padding: 10 }}
-      >
-        <Text style={{ color: "#ffffff" }}>Home</Text>
-      </TouchableOpacity>
-    )
+    // headerRight: (
+    //   <TouchableOpacity
+    //     onPress={() => navigation.navigate("Home")}
+    //     style={{ margin: 10, backgroundColor: "orange", padding: 10 }}
+    //   >
+    //     <Text style={{ color: "#ffffff" }}>Home</Text>
+    //   </TouchableOpacity>
+    // )
   });
 
   constructor(props) {
@@ -32,7 +32,6 @@ export default class register extends Component {
   }
 
   userRegister = () => {
-    //alert('ok'); // version 0.48
 
     const { userName } = this.state;
     const { userEmail } = this.state;
@@ -103,7 +102,7 @@ export default class register extends Component {
           style={{
             width: 250,
             padding: 10,
-            backgroundColor: "magenta",
+            backgroundColor: "blue",
             alignItems: "center"
           }}
         >

@@ -11,7 +11,7 @@ static navigationOptions= ({navigation}) =>({
 		const { navigate } = this.props.navigation;
 		return(
 	  <View style={styles.container}>	
-	  <Text style={styles.pageName}>TEST Login</Text>
+	  {/* <Text style={styles.pageName}>Home</Text> */}
 	  
 
 
@@ -33,26 +33,34 @@ static navigationOptions= ({navigation}) =>({
 	}
 }
 const styles = StyleSheet.create({
-	container:{
-		display:'flex',alignItems:'center',
-		justifyContent:'center'
-	},
-	btn1:{
-		backgroundColor:'orange',
-		padding:10,margin:10,width:'95%'
-	},
-	btn2:{
-		backgroundColor:'blue',
-		padding:10,margin:10,width:'95%'
-	},
-	pageName:{
-		margin:10,fontWeight:'bold',
-		color:'#000', textAlign:'center'
-	},
-	btnText:{
-		color:'#fff',fontWeight:'bold'
-	},
-	
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  btn1: {
+    backgroundColor: "#3366ff",
+    padding: 10,
+    margin: 10,
+    width: "95%"
+  },
+  btn2: {
+	  backgroundColor: "#3366ff",
+    padding: 10,
+    margin: 10,
+    width: "95%"
+  },
+  pageName: {
+    margin: 10,
+    fontWeight: "bold",
+    color: "#000",
+    textAlign: "center"
+  },
+  btnText: {
+    color: "#fff",
+	fontWeight: "bold",
+	textAlign: "center"
+  }
 });
 
 
